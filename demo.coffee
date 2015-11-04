@@ -23,12 +23,18 @@ for ringtone in ringtones
 		if ringtone.error
 			$error = $("<output class=error>").appendTo($right).text(ringtone.error.message)
 		else
-			###$rtttl.text("#{ringtone.name}:#{ringtone.controls}:")
+			$rtttl.text("#{ringtone.name}:#{ringtone.controls}:")
 			$notes = $(
-				for note in ringtone.notes
-					$note = $("<span>").appendTo($rtttl).text(note.toString())
-					$delimeter = $("<span>").appendTo($rtttl).text(",")
-			)###
+				for note, i in ringtone.notes
+					$rtttl.append(
+						if note.toString().match /p/
+							$("<span class='rest'>").appendTo($rtttl).text(note.toString())
+						else
+							$("<span class='note'>").appendTo($rtttl).text(note.toString())
+						unless i is ringtone.notes.length - 1 
+							$("<span class='comma delimeter'>").appendTo($rtttl).text(",")
+					)
+			)
 			iid = -1
 			update = ->
 				if isPlaying ringtone
@@ -46,9 +52,6 @@ for ringtone in ringtones
 				update()
 				iid = setInterval update, 50
 				
-				# location.hash = ringtone.name
-				# History.pushState ringtone.name, ringtone.name, "##{ringtone.name}"
-				# history.pushState ringtone.name, ringtone.name, "##{ringtone.name}"
 				$ringtone[0].scrollIntoViewIfNeeded() # @TODO: account for padding
 			
 			ringtone.stop = ->
@@ -71,39 +74,13 @@ for ringtone in ringtones
 					disabled: yes
 					title: "Web Audio API support required"
 
-# do window.onhashchange = ->
-# 	for ringtone in ringtones when (location.hash.indexOf ringtone.name) is 1
-# 		unless isPlaying ringtone
-# 			ringtone.play?()
-
-
-# $(window).on "popstate", (e)->
-# 	window.onhashchange e
-
-# History.Adapter.bind window, "statechange", ->
-# $(window).on "statechange", ->
-	# state = History.getState()
-	# console.log "statechange:", state.data, state.title, state.url
 $(window).on "navigate", (event, data)->
-	# console.log "navigate:", event, data
-	# {state} = data
 	if location.hash.match /#?.+/
 		for ringtone in ringtones
-			# if state is ringtone.name
 			if (location.hash.indexOf ringtone.name) is 1
 				ringtone.play?() unless isPlaying ringtone
-			# else
-			# 	ringtone.stop?()
 	else
 		for ringtone in ringtones
 			ringtone.stop?()
 
 $(window).triggerHandler "navigate"
-
-# $("a").click (e)->
-# 	e.preventDefault()
-# 	# $('html, body').animate
-# 	# 	scrollTop: $( $(this).attr('href') ).offset().top
-# 	# , 500
-# 	history.pushState {}, '', @href
-# 	console.log @href, e
