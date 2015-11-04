@@ -3,7 +3,7 @@ do ->
 	
 	RTTTL = {}
 	
-	pitches = "a, a#, b, h, c, c#, d, d#, e, f, f#, g, g#".split ", "
+	pitches = "c, c#, d, d#, e, f, f#, g, g#, a, a#, b".split ", "
 	
 	RTTTL.parse = (str)->
 		
@@ -111,9 +111,8 @@ do ->
 					#seconds = (duration / ringtone.controls.defaultNoteDuration) * (60 / ringtone.controls.beatsPerMinute)
 					
 					unless rest
-						#n = scale - 4 + pitches.indexOf(name) / 12
-						n = scale - 4 + (pitches.indexOf(name) - 4) / 12
-						frequency = 440 * Math.pow(2, n)
+						n = scale - 4 + pitches.indexOf(name) / 12
+						frequency = 440 * 2 ** n
 					
 					ringtone.notes.push {
 						name
