@@ -10,7 +10,7 @@ application, except for spaces in the name, which should be retained.
 
 ## Example
 
-Simpsons:d=4,o=5,b=160:32p,c.6,e6,f#6,8a6,g.6,e6,c6,8a,8f#,8f#,8f#,2g
+	Simpsons:d=4,o=5,b=160:32p,c.6,e6,f#6,8a6,g.6,e6,c6,8a,8f#,8f#,8f#,2g
 
 This file describes a ringtone whose name is 'Simpsons'. The control section 
 sets the beats per minute at 160, the default note length as 4, and the default 

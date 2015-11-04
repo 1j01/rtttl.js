@@ -3,16 +3,17 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>RTTTL Player</title>
-		<script src="http://coffeescript.org/extras/coffee-script.js"></script>
-		<script src="demo-lib/jquery-1.11.1.min.js"></script>
+		<script src="lib/coffee-script.js"></script>
+		<script src="lib/jquery-2.1.4.min.js"></script>
+		<!--<script src="lib/history.js"></script>
+		<script src="lib/history.adapter.jquery.js"></script>-->
+		<script src="lib/jquery.mobile.custom.js"></script>
 		<style>
 			#data {
 				opacity: 0.5;
 			}
 			* {
-				-webkit-box-sizing: border-box;
-				   -moz-box-sizing: border-box;
-				        box-sizing: border-box;
+				box-sizing: border-box;
 			}
 			body, h1, pre {
 				margin: 0;
@@ -61,17 +62,7 @@
 				border: 1px solid gray;
 				border-radius: 50%;
 				outline: none;
-				/*background: #ddd;*/
 			}
-			/*button.round:hover,
-			button.round:focus {
-				border-color: black;
-				background: white;
-			}
-			.playing {
-				color: rgb(30, 150, 216);
-			}/**/
-			
 			
 			button.round {
 				position: relative;

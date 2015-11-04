@@ -1,12 +1,12 @@
 
-# rtttl
+# rtttl.js
 
-Read and write RTTTL files.
+Parse and play [RTTTL](RTTTL.md) files.
 
-Parse RingTone Text Transfer Language files.
+[Demo!](http://1j01.github.io/rtttl.js/)
 
-
-## usage
+<!--
+## Usage
 
 	npm install ringtone
 
@@ -30,13 +30,14 @@ or
 		.note(...)
 		.name("Something");
 	var rtttl = custom.toString();
+-->
 
 
-## license
+## License
 
 The MIT License (MIT)
 
-Copyright (c) 2013 Johan Nordberg
+Copyright (c) 2015 Isaiah Odhner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

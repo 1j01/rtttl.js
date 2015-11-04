@@ -1,10 +1,15 @@
 {
   "name": "rtttl",
   "version": "1.0.0",
-  "description": "Parse RTTTL files",
+  "description": "Parse and play RTTTL",
   "author": "Isaiah Odhner <isaiahodher@gmail.com>",
-  "main": "index.js",
-  "repository": "https://github.com/1j01/rtttl.js.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1j01/rtttl.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/1j01/rtttl.js/issues"
+  },
   "keywords": [
     "rtttl",
     "ringtone",
@@ -17,5 +22,6 @@
     "parser"
   ],
   "license": "MIT",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "main": "index.js"
 }
