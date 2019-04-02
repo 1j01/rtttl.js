@@ -1,15 +1,17 @@
 
-# RTTTL = require './rtttl.coffee'
-# {AudioContext, AudioParam} = require 'web-audio-api'
-# context = new AudioContext
-
-context = new (
-	window.AudioContext ?
-	window.webkitAudioContext ?
-	window.mozAudioContext ?
-	window.oAudioContext ?
-	window.msAudioContext
-)
+if window?
+	RTTTL = window.RTTTL
+	context = new (
+		window.AudioContext ?
+		window.webkitAudioContext ?
+		window.mozAudioContext ?
+		window.oAudioContext ?
+		window.msAudioContext
+	)
+else
+	RTTTL = require './rtttl.coffee'
+	{AudioContext, AudioParam} = require 'web-audio-api'
+	context = new AudioContext
 
 master = context.createGain()
 master.connect context.destination
@@ -22,17 +24,17 @@ noteVolume.gain.value = 0
 osc = context.createOscillator()
 osc.start 0
 osc.connect noteVolume
+# osc.type = 'square'
 
-
-playingSong = null
+playingRingtone = null
 playingTime = 0
-@isPlaying = (song)->
-	return no if song? and song isnt playingSong
+@isPlaying = (ringtone)->
+	return no if ringtone? and ringtone isnt playingRingtone
 	context.currentTime < playingTime
 
 @play = (ringtone)->
 	stop()
-	playingSong = ringtone
+	playingRingtone = ringtone
 	t = context.currentTime + 0.05
 	for note in ringtone.notes
 		unless note.rest
@@ -47,7 +49,7 @@ playingTime = 0
 
 @stop = ->
 	playingTime = 0
-	playingSong = null
+	playingRingtone = null
 	t = context.currentTime
 	osc.frequency.cancelScheduledValues t
 	noteVolume.gain.cancelScheduledValues t

@@ -23,5 +23,8 @@
   ],
   "license": "MIT",
   "readmeFilename": "README.md",
-  "main": "index.js"
+  "main": "index.js",
+  "dependencies": {
+    "web-audio-api": "^0.2.2"
+  }
 }
