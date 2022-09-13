@@ -32,6 +32,7 @@ playingTime = 0
 
 @play = (ringtone)->
 	stop()
+	context.resume()
 	playingSong = ringtone
 	t = context.currentTime + 0.05
 	for note in ringtone.notes
